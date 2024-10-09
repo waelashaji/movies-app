@@ -113,10 +113,12 @@ export class DetailComponent implements OnInit {
       next: () => {
         this.reviews.push(this.reviewForm.value)
       },
+      error: () => {
+        this.reviewForm.reset();
+      },
       complete: () => { 
         this.reviewForm.reset();
       },
-      error: () => {},
     });
   }
 
