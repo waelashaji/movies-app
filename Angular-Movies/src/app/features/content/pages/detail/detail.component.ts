@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {MoviesService} from '../../../../core/services/movies.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {take} from 'rxjs/operators';
 import {IContent} from "../../../../core/interfaces/content.interface";
 import {DatePipe, NgOptimizedImage} from "@angular/common";
@@ -54,6 +54,7 @@ export class DetailComponent implements OnInit {
     private reviewsService: ReviewsService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
+    private router: Router
   ) {
   }
 
@@ -70,14 +71,20 @@ export class DetailComponent implements OnInit {
 
   getMovie(id: string) {
     this.isLoading = true;
-
-    this.moviesService.getMovie(id).pipe(take(1)).subscribe(
-      movie => {
+  
+    this.moviesService.getMovie(id).pipe(take(1)).subscribe({
+      next: (movie) => {
         this.content = movie;
         this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.router.navigate(['404']);
+      },
+      complete: () => {
         this.cdr.detectChanges();
       }
-    );
+    });
   }
 
   getReviews(id: string) {

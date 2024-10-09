@@ -4,7 +4,6 @@ import { somethingWentWrongError } from "#errors/index";
 
 class OMDBService {
   static async getMoviesByTitle({ title, type, page }) {
-    // TODO: handle errors
     const response = await axios.get(`${config.OMDB_API_URL}`, {
       params: { s: title, type, page },
     });
@@ -13,10 +12,10 @@ class OMDBService {
   }
 
   static async getMovieById(id) {
-    // TODO: handle errors
     const response = await axios.get(`${config.OMDB_API_URL}`, {
       params: { i: id },
     });
+    if (response.data.Error) throw somethingWentWrongError();
     return response.data;
   }
 }
