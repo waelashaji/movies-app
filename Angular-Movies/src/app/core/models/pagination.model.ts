@@ -1,11 +1,10 @@
-import {TvModel} from '../../features/content/models/tv.model';
-import {MovieModel} from '../../features/content/models/movie.model';
+import { MovieModel } from "app/core/interfaces/movie.interface";
 
 export class PaginationModel {
 
   public dates?: Object;
   public page: number;
-  public results: Array<MovieModel | TvModel>;
+  public results: Array<MovieModel>;
   public total_pages: number;
   public total_results: number;
 

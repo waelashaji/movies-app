@@ -1,8 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit } from "@angular/core";
-import { MoviesService } from "../content/services/movies.service";
+import { MoviesService } from "../../core/services/movies.service";
 import { SeoService } from "../../core/services/seo.service";
 import { debounceTime, take } from "rxjs/operators";
-import { MovieModel } from "../content/models/movie.model";
 import { MatTab, MatTabGroup } from "@angular/material/tabs";
 import { MovieCardComponent } from "../../shared/components/poster-card-view/poster-card.component";
 import { RouterLink } from "@angular/router";
@@ -11,6 +10,7 @@ import { SwiperOptions } from "swiper/types";
 import { SwiperDirective } from "../../shared/directives/swiper.directive";
 import { MatIcon } from "@angular/material/icon";
 import { FormsModule } from "@angular/forms";
+import { MovieModel } from "../../core/interfaces/movie.interface";
 
 @Component({
   selector: "app-home",

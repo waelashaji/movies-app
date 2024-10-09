@@ -1,9 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {MoviesService} from '../../services/movies.service';
+import {MoviesService} from '../../../../core/services/movies.service';
 import {ActivatedRoute} from '@angular/router';
 import {take} from 'rxjs/operators';
-import {IMovie} from "../../interfaces/movie.interface";
-import {IContent} from "../../interfaces/content.interface";
+import {IContent} from "../../../../core/interfaces/content.interface";
 import {DatePipe, NgOptimizedImage} from "@angular/common";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {CdkDrag, CdkDragHandle} from "@angular/cdk/drag-drop";
@@ -12,9 +11,10 @@ import {ImgMissingDirective} from "../../../../shared/directives/img-missing.dir
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import { ReviewsService } from '../../services/reviews.service';
-import { Review } from '../../interfaces/review.interface';
+import { ReviewsService } from '../../../../core/services/reviews.service';
+import { Review } from '../../../../core/interfaces/review.interface';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MovieModel } from '../../../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-detail',
@@ -39,7 +39,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class DetailComponent implements OnInit {
 
   movie_id: string;
-  content!: Partial<IMovie | any>;
+  content!: Partial<MovieModel>;
   reviews!: Partial<Review | any>;
   video: IContent;
   isLoading = true;
