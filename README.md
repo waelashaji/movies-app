@@ -26,4 +26,4 @@ npm run dev
 
 ## 🛠️ Environment Variables
 
-change ```.env```  with your own <a href="https://www.omdbapi.com/apikey.aspx" target="_blank">The Movie OMDB API</a>  and MondoDB connection string.
+Create ```.env``` file with your own <a href="https://www.omdbapi.com/apikey.aspx" target="_blank">The Movie OMDB API</a>  and MondoDB connection string.
