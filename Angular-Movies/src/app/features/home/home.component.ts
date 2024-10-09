@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
       title: "Angular Movies and Series",
       description: "Movie and Series Home Page",
     });
-    this.inputChange.pipe(debounceTime(1000)).subscribe(() => {
+    this.inputChange.pipe(debounceTime(500)).subscribe(() => {
       this.getMovies(this.searchTerm, "movie", 1);
     });
   }
