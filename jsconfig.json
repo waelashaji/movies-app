@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "paths": {
+      "#config/*": ["./npm/config/*.js"],
+      "#controllers/*": ["./npm/controllers/*.js"],
+      "#data/*": ["./npm/data/*.js"],
+      "#database/*": ["./npm/database/*.js"],
+      "#errors/*": ["./npm/errors/*.js"],
+      "#middlewares/*": ["./npm/middlewares/*.js"],
+      "#models/*": ["./npm/models/*.js"],
+      "#routes/*": ["./npm/routes/*.js"],
+      "#services/*": ["./npm/services/*.js"],
+      "#utils/*": ["./npm/utils/*.js"]
+    }
+  },
+  "exclude": [".git", "node_modules", "**/node_modules"]
+}

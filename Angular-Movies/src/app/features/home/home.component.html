@@ -1,0 +1,44 @@
+<section class="home-main-content">
+  Welcome
+</section>
+
+<div class="container">
+  <!-- Search Form -->
+  <section class="search__container">
+      <input [(ngModel)]="searchTerm" (input)="onInputChange()" type="text" placeholder="Looking for...">
+  </section>
+
+  <!--Movies on theathers-->
+  <section class="movies__container">
+
+    <h2 class="movies__title" title="Go to Movies">
+        <mat-icon>movie</mat-icon> Movies
+    </h2>
+    @defer {
+      @if (moviesList.length > 0) {
+        <swiper-container appSwiper [config]="config" pagination="true" scrollbar="false">
+          @for (movie of moviesList | slice:0:15; track movie) {
+            <swiper-slide>
+              <app-poster-card [model]="movie" [isMovie]="true"></app-poster-card>
+            </swiper-slide>
+          }@empty {
+            <div class="content__no-recomended">
+              <mat-icon [inline]="true">sentiment_dissatisfied</mat-icon>
+              <span>Nothing to show.</span>
+            </div>            
+          }
+        </swiper-container>
+      }@else if(isLoading){
+        <div class="content__no-recomended">
+          <span>Loading ...</span>
+        </div>
+      }@else {
+        <div class="content__no-recomended">
+          <mat-icon [inline]="true">sentiment_dissatisfied</mat-icon>
+          <span>Nothing to Show.</span>
+        </div>
+      }
+    }
+
+  </section>
+</div>

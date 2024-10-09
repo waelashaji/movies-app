@@ -1,0 +1,23 @@
+<div class="poster">
+
+  <a [routerLink]="'/movies/' + model.imdbID"
+     [title]="'Go to ' + model.Title">
+    <img class="poster__image" loading="lazy" [ngSrc]="model['Poster']"
+         srcset="https://image.tmdb.org/t/p/w220_and_h330_face/{{model['poster_path']}} 1x,
+         https://image.tmdb.org/t/p/w440_and_h660_face/{{model['poster_path']}} 2x"
+         [alt]="model.Title" appImgMissingDirective [height]="159" [width]="239">
+  </a>
+
+  <div class="poster__content">
+    <a *ngIf="model.Title"
+       [routerLink]="isMovie ? '/movies/' + model.imdbID : '/tv-shows/' + model.imdbID"
+       [title]="model.Title"
+       class="poster__title colored-hover">
+      {{model.Title}}
+    </a>
+    <p *ngIf="model['Year']">
+      {{model['Year'] | date}}
+    </p>
+  </div>
+
+</div>

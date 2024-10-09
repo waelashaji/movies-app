@@ -1,0 +1,37 @@
+{
+  "name": "main-api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon --env-file=.env ./bin/www",
+    "dev": "concurrently --kill-others \"cd Angular-Movies && npm run watch_app\" \"npm run nodemon\""
+  },
+  "imports": {
+    "#config/*": "./npm/config/*.js",
+    "#controllers/*": "./npm/controllers/*.js",
+    "#data/*": "./npm/data/*.js",
+    "#database/*": "./npm/database/*.js",
+    "#errors/*": "./npm/errors/*.js",
+    "#middlewares/*": "./npm/middlewares/*.js",
+    "#models/*": "./npm/models/*.js",
+    "#routes/*": "./npm/routes/*.js",
+    "#services/*": "./npm/services/*.js",
+    "#utils/*": "./npm/utils/*.js"
+  },
+  "simple-git-hooks": {},
+  "dependencies": {
+    "axios": "^1.6.8",
+    "concurrently": "^9.0.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

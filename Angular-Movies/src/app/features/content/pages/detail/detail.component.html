@@ -1,0 +1,87 @@
+@if (isLoading) {
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<main class="content">
+
+  <section class="content__main"
+           [style]="'background-image: url(' + content?.Poster + ');'"
+  >
+
+    <div class="content__container">
+
+      <div class="content__info container">
+
+        <img [ngSrc]="content?.Poster" [width]="300" [height]="450" [alt]="content?.Title">
+
+        <div class="content__data">
+
+          <h2>{{content?.Title}} ({{content?.Year | date:'YYYY' }})</h2>
+          <h3>{{content?.tagline}}</h3>
+
+          <h4>Overview</h4>
+          <p>{{content?.Plot}}</p>
+
+            <button mat-flat-button color="primary" aria-label="Trailer" class="play-trailer">
+              <mat-icon aria-hidden="false" fontIcon="play_arrow"></mat-icon> Play Trailer
+            </button>
+
+          <h4>Categories</h4>
+
+          <div class="content__data--categories">
+              <button mat-raised-button color="primary" aria-label="Genres" disabled>{{content?.Genre}}</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Mobile data  -->
+  <section class="content__data-mobile">
+    <h2>{{content?.Title}} ({{content?.Year | date:'YYYY' }})</h2>
+    <h3>{{content?.tagline}}</h3>
+
+    <h4>Overview</h4>
+    <p>{{content?.Plot}}</p>
+
+      <button mat-flat-button color="primary" aria-label="Trailer" class="play-trailer">
+          <mat-icon aria-hidden="false" fontIcon="play_arrow"></mat-icon> Play Trailer
+        </button>
+    </section>
+
+    @if (!isReviewsLoading) {
+      <section class="content__reviews">
+        <h4>Reviews</h4>
+        @for (review of reviews; track review) {
+          <div class="reviews__list">
+            <div class="review">
+              <strong>{{ review.userName }}:</strong>
+              <p>{{ review.review }}</p>
+            </div>
+          </div>
+        }
+      
+        <form [formGroup]="reviewForm" (ngSubmit)="onFormSubmit()">
+          <input
+            formControlName="userName"
+            type="text"
+            placeholder="Your Name"
+            name="userName"
+            required
+          />
+          <textarea
+            formControlName="review"
+            placeholder="Write your review..."
+            name="comment"
+            required
+          ></textarea>
+          <button mat-flat-button color="primary" type="submit">Submit Review</button>
+        </form>
+      </section>
+    }
+    
+</main>
